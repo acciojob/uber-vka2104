@@ -53,8 +53,8 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer = customerOpt.get();
 
 		//get all drivers based on id sorted order and get the available driver
-//		Sort sort = Sort.by(Sort.Direction.ASC, "driverId");
-		List<Driver> drivers = driverRepository2.findAll();
+		Sort sort = Sort.by(Sort.Direction.ASC, "driverId");
+		List<Driver> drivers = driverRepository2.findAll(sort);
 		if(drivers == null || drivers.size() == 0) {
             throw new Exception("No cab available!");
         }

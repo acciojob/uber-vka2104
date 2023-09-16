@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 		//get all drivers based on id sorted order and get the available driver
 		Sort sort = Sort.by(Sort.Direction.ASC, "driverId");
 		List<Driver> drivers = driverRepository2.findAll(sort);
-		if(drivers.isEmpty()) throw new Exception("No cab available!");
+//		if(drivers.isEmpty()) throw new Exception("No cab available!");
 		Driver availableDriver = null;
 		for(Driver driver: drivers) {
 			if(driver.getCab().getAvailable()) {
@@ -63,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
 				break;
 			}
 		}
-		if(availableDriver == null) throw new Exception("No cab available!");
+//		if(availableDriver == null) throw new Exception("No cab available!");
 		//create instance for trip booking
 		TripBooking tripBooking = new TripBooking();
 		//sewt the details to trip booking object

@@ -96,19 +96,13 @@ public class CustomerServiceImpl implements CustomerService {
 			Optional<TripBooking> tripBookingOpt = tripBookingRepository2.findById(tripId);
 			if(tripBookingOpt.isPresent()) {
 				TripBooking tripBooking = tripBookingOpt.get();
-				if(tripBooking != null) {
-					tripBooking.setStatus(TripStatus.CANCELED);
-					tripBooking.setBill(0);
-					TripBooking updatedTripBooking = tripBookingRepository2.save(tripBooking);
+				tripBooking.setStatus(TripStatus.CANCELED);
+				tripBooking.setBill(0);
+				TripBooking updatedTripBooking = tripBookingRepository2.save(tripBooking);
 
-					Driver driver = updatedTripBooking.getDriver();
-					if(driver != null) {
-						if(driver.getCab() != null) {
-							driver.getCab().setAvailable(true);
-							Driver updatedDriver = driverRepository2.save(driver);
-						}
-					}
-				}
+				Driver driver = updatedTripBooking.getDriver();
+				driver.getCab().setAvailable(true);
+				Driver updatedDriver = driverRepository2.save(driver);
 			}
 		} catch (NullPointerException ignored) {
 

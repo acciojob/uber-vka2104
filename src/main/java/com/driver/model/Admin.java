@@ -6,12 +6,12 @@ import javax.persistence.*;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int adminId;
+    private int adminId;
 
     @Column(unique = true, nullable = false)
-    String username;
+    private String username;
     @Column(nullable = false)
-    String password;
+    private String password;
 
     public Admin() {
     }

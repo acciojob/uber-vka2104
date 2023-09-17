@@ -6,22 +6,22 @@ import javax.persistence.*;
 public class TripBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int tripBookingId;
+    private int tripBookingId;
     @Column(nullable = false)
-    String fromLocation;
+    private String fromLocation;
     @Column(nullable = false)
-    String toLocation;
+    private String toLocation;
     @Column(nullable = false)
-    int distanceInKm;
+    private int distanceInKm;
     @Enumerated(EnumType.STRING)
-    TripStatus status;
-    int bill;
+    private TripStatus status;
+    private int bill;
     @ManyToOne
     @JoinColumn
-    Customer customer;
+    private Customer customer;
     @ManyToOne
     @JoinColumn
-    Driver driver;
+    private Driver driver;
 
     public TripBooking() {
     }

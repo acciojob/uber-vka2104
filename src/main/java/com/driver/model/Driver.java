@@ -8,13 +8,13 @@ import java.util.List;
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int driverId;
+    private int driverId;
     @Column(unique = true,nullable = false)
-    String mobile;
+    private String mobile;
     @Column(nullable = false)
-    String password;
+    private String password;
     @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
-    Cab cab;
+    private Cab cab;
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     List<TripBooking> tripBookingList = new ArrayList<>();
 

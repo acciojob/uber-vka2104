@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		//get customer by id
 		Optional<Customer> customerOpt = customerRepository2.findById(customerId);
-		if(!customerOpt.isPresent()) throw new Exception("No customer available!");
+//		if(!customerOpt.isPresent()) return null;
 		Customer customer = customerOpt.get();
 
 		//get all drivers based on id sorted order and get the available driver

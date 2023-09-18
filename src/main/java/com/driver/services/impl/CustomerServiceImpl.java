@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
 //        }
 		Driver availableDriver = null;
 		for(Driver driver: drivers) {
-			if(driver.getCab().getAvailable() && (availableDriver == null || driver.getDriverId() < availableDriver.getDriverId())) {
+			if(driver.getCab().getAvailable()) {
 				availableDriver = driver;
 				break;
 			}
@@ -68,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
 		if(availableDriver == null) throw new Exception("No cab available!");
 		//create instance for trip booking
 		TripBooking tripBooking = new TripBooking();
-		//sewt the details to trip booking object
+		//set the details to trip booking object
 		tripBooking.setCustomer(customer);
 		tripBooking.setDriver(availableDriver);
 		tripBooking.setStatus(TripStatus.CONFIRMED);

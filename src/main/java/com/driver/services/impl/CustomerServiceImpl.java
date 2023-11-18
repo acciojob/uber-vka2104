@@ -49,9 +49,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 		//get customer by id
 		Optional<Customer> customerOpt = customerRepository2.findById(customerId);
-		if(!customerOpt.isPresent()) return null;
+		if(!customerOpt.isPresent()) throw new Exception("Enter a Valid Customer id!");
 		Customer customer = customerOpt.get();
-
 		//get all drivers based on id sorted order and get the available driver
 //		Sort sort = Sort.by(Sort.Direction.ASC, "driverId");
 		List<Driver> drivers = driverRepository2.findAll();
@@ -108,22 +107,9 @@ public class CustomerServiceImpl implements CustomerService {
 			tripBooking.setStatus(TripStatus.COMPLETED);
 			TripBooking updatedTripBooking  = tripBookingRepository2.save(tripBooking);
 
-//			Customer customer = updatedTripBooking.getCustomer();
-//			for (TripBooking trip: customer.getTripBookingList()) {
-//				if(trip.getTripBookingId() == tripId) {
-//					trip.setStatus(TripStatus.COMPLETED);
-//				}
-//			}
-//			Customer updatedCustomer = customerRepository2.save(customer);
-
 			Driver driver = updatedTripBooking.getDriver();
 			if(driver != null) {
 				driver.getCab().setAvailable(true);
-//			for (TripBooking trip: driver.getTripBookingList()) {
-//				if(trip.getTripBookingId() == tripId) {
-//					trip.setStatus(TripStatus.COMPLETED);
-//				}
-//			}
 
 				Driver updatedDriver = driverRepository2.save(driver);
 			}
